@@ -19,6 +19,12 @@ public class Board {
         }
     }
 
+    public void swapWeapons(int weapon1Row, int weapon1Col, int weapon2Row, int weapon2Col) {
+        int tempWeapon = board[weapon1Row][weapon1Col];
+        board[weapon1Row][weapon1Col] = board[weapon2Row][weapon2Col];
+        board[weapon2Row][weapon2Col] = tempWeapon;
+    }
+
     public int[][] getBoard() {
         return board;
     }

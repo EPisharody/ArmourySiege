@@ -20,9 +20,15 @@ public class Board {
     }
 
     public void swapWeapons(int weapon1Row, int weapon1Col, int weapon2Row, int weapon2Col) {
-        int tempWeapon = board[weapon1Row][weapon1Col];
-        board[weapon1Row][weapon1Col] = board[weapon2Row][weapon2Col];
-        board[weapon2Row][weapon2Col] = tempWeapon;
+        // Check if weapons are in the same row or column
+        if ((weapon1Row == weapon2Row) ^ (weapon1Col == weapon2Col)) {
+            // If weapons are in the same row or column, they must be adjacent
+            if (((weapon2Row == weapon1Row - 1) || (weapon2Row == weapon1Row + 1)) || ((weapon2Col == weapon1Col - 1) || (weapon2Col == weapon1Col + 1))) {
+                int tempWeapon = board[weapon1Row][weapon1Col];
+                board[weapon1Row][weapon1Col] = board[weapon2Row][weapon2Col];
+                board[weapon2Row][weapon2Col] = tempWeapon;
+            }
+        }
     }
 
     public int[][] getBoard() {
